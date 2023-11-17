@@ -7,6 +7,7 @@ import { TbArrowBounce } from "react-icons/tb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
+import CreateFormBtn from "@/components/CreateFormBtn";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Separator className="my-6" />
       <h1 className="text-4xl font-bold col-span-2">Your forms</h1>
       <Separator className="my-6" />
+      <CreateFormBtn />
     </div>
   );
 }
