@@ -30,6 +30,7 @@ import { BsFileEarmarkPlus } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 
 const CreateFormBtn = () => {
+  const router = useRouter();
   const form = useForm<formSchemaType>({
     resolver: zodResolver(formSchema),
   });
@@ -43,6 +44,7 @@ const CreateFormBtn = () => {
         title: "Success",
         description: "Form created successfully",
       });
+      router.push(`/builder/${formId}`);
     } catch (error) {
       toast({
         title: "Error",
