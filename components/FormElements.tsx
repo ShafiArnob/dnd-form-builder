@@ -15,7 +15,9 @@ export type FormElement = {
   };
 
   //component -> designer for each element
-  designerComponent: React.FC;
+  designerComponent: React.FC<{
+    elementInstance: FormElementInstance;
+  }>;
   //component -> form preview or for submit page
   formComponent: React.FC;
   propertiesComponent: React.FC;
