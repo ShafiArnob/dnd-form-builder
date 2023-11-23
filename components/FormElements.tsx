@@ -6,6 +6,7 @@ export type ElementType = "TextField";
 export type FormElement = {
   type: ElementType;
 
+  // the id will be added later
   construct: (id: string) => FormElementInstance;
 
   designerBtnElement: {
