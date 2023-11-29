@@ -20,7 +20,10 @@ export type FormElement = {
   }>;
   //component -> form preview or for submit page
   formComponent: React.FC;
-  propertiesComponent: React.FC;
+  //properties of the form
+  propertiesComponent: React.FC<{
+    elementInstance: FormElementInstance;
+  }>;
 };
 
 export type FormElementInstance = {
