@@ -19,7 +19,9 @@ export type FormElement = {
     elementInstance: FormElementInstance;
   }>;
   //component -> form preview or for submit page
-  formComponent: React.FC;
+  formComponent: React.FC<{
+    elementInstance: FormElementInstance;
+  }>;
   //properties of the form
   propertiesComponent: React.FC<{
     elementInstance: FormElementInstance;
