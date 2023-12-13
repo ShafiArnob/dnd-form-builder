@@ -9,13 +9,18 @@ import {
   FormMessage,
 } from "../ui/form";
 import { MdTextFields } from "react-icons/md";
-import { ElementType, FormElement, FormElementInstance } from "../FormElements";
+import {
+  ElementType,
+  FormElement,
+  FormElementInstance,
+  SubmitFunction,
+} from "../FormElements";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useDesigner from "../hooks/useDesigner";
 import { Switch } from "../ui/switch";
 
@@ -192,17 +197,29 @@ function PropertiesComponent({
 
 function FormComponent({
   elementInstance,
+  submitValue,
 }: {
   elementInstance: FormElementInstance;
+  submitValue?: SubmitFunction;
 }) {
   const element = elementInstance as CustomInstance;
+
+  const [value, setValue] = useState("");
+
   const { label, required, placeholder, helperText } = element.extraAttributes;
   return (
     <div className="flex flex-col gap-2 w-full">
       <Label>
         {label}
         {required && "*"}
-        <Input placeholder={placeholder} />
+        <Input
+          placeholder={placeholder}
+          onChange={(e) => setValue(e.target.value)}
+          onBlur={(e) => {
+            if (!submitValue) return;
+            submitValue(element.id, e.target.value);
+          }}
+        />
         {helperText && (
           <p className="text-muted-foreground text-[0.8rem]">{helperText}</p>
         )}
