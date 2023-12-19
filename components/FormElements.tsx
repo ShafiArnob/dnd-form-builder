@@ -1,7 +1,8 @@
 import React from "react";
 import { TextFieldFormElement } from "./fields/TextField";
+import { TitleFieldFormElement } from "./fields/TitleField";
 
-export type ElementType = "TextField";
+export type ElementType = "TextField" | "TitleField";
 
 export type SubmitFunction = (key: string, value: string) => void;
 
@@ -46,4 +47,5 @@ type FormElementType = {
 
 export const FormElements: FormElementType = {
   TextField: TextFieldFormElement,
+  TitleField: TitleFieldFormElement,
 };
