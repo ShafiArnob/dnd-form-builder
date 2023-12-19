@@ -24,19 +24,19 @@ import { useEffect, useState } from "react";
 import useDesigner from "../hooks/useDesigner";
 import { Switch } from "../ui/switch";
 import { cn } from "@/lib/utils";
-import { LuHeading1 } from "react-icons/lu";
+import { LuHeading1, LuHeading2 } from "react-icons/lu";
 
-const type: ElementType = "TitleField";
+const type: ElementType = "SubTitleField";
 
 const extraAttributes = {
-  title: "Title Field",
+  title: "SubTitle Field",
 };
 
 const propertiesSchema = z.object({
   title: z.string().min(2).max(50),
 });
 
-export const TitleFieldFormElement: FormElement = {
+export const SubTitleFieldFormElement: FormElement = {
   type: type,
   construct: (id: string) => ({
     id,
@@ -44,8 +44,8 @@ export const TitleFieldFormElement: FormElement = {
     extraAttributes,
   }),
   designerBtnElement: {
-    icon: LuHeading1,
-    label: "Title field",
+    icon: LuHeading2,
+    label: "SubTitle field",
   },
   designerComponent: DesignerComponent,
   formComponent: FormComponent,
@@ -99,7 +99,7 @@ function PropertiesComponent({
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Title</FormLabel>
+              <FormLabel>SubTitle</FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -124,7 +124,7 @@ function FormComponent({
 }) {
   const element = elementInstance as CustomInstance;
   const { title } = element.extraAttributes;
-  return <p className="text-xl">{title}</p>;
+  return <p className="text-lg">{title}</p>;
 }
 
 function DesignerComponent({
@@ -136,8 +136,8 @@ function DesignerComponent({
   const { title } = element.extraAttributes;
   return (
     <div className="flex flex-col gap-2 w-full">
-      <Label className="text-muted-foreground">Title field</Label>
-      <p className="text-xl">{title}</p>
+      <Label className="text-muted-foreground">SubTitle field</Label>
+      <p className="text-lg">{title}</p>
     </div>
   );
 }
